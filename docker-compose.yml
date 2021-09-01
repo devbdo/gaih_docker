@@ -16,7 +16,6 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
-
   db:
     image: mysql:5.7
     container_name: gaih-db
@@ -24,12 +23,13 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_DATABASE: gaihapp
+      MYSQL_ROOT_PASSWORD: gaih123*
+      MYSQL_PASSWORD: gaih123*
+      MYSQL_USER: gaihapp_user
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+      DB_SCHEMA: public
     volumes:
       - ./mysql/my.cnf:/etc/mysql/my.cnf
       - ./mysql/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
@@ -38,7 +38,7 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: laravel-nginx
+    container_name: gaih-nginx
     restart: unless-stopped
     ports:
       - 8000:80
