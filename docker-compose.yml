@@ -18,7 +18,7 @@ services:
       - app-network
 
   db:
-    image: gaih-mysql:5.7
+    image: mysql:5.7
     container_name: gaih-db
     restart: unless-stopped
     ports:
@@ -37,7 +37,7 @@ services:
       - app-network
 
   nginx:
-    image: gaih-nginx:alpine
+    image: nginx:alpine
     container_name: laravel-nginx
     restart: unless-stopped
     ports:
