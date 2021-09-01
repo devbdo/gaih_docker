@@ -17,11 +17,19 @@ This is a PHP development environment used to run gaih applications. The followi
 
 - Set the environment variables creating a `.env` file. See the MySQL service section below for more informations.
 
+- DOCKER GIT DOWNLOAD
+
+```bash
+https://github.com/devbdo/gaih_docker.git
+```
+
 - Build the app image with the following command:
 
 ```bash
 docker-compose build --pull --no-cache
 ```
+
+
 
 - When the build is finished, you can run the environment in background mode with:
 
