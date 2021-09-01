@@ -16,6 +16,12 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
+  
+  networks:
+  default:
+    external: true
+    name: globalaihub.local
+
 
   db:
     image: gaih-mysql:GLOBALAIHUB
