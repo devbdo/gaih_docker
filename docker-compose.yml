@@ -7,7 +7,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: gaih-image
+    image: gaih-image:GLOBALAIHUB
     container_name: gaih-app
     restart: unless-stopped
     working_dir: /var/www/
@@ -18,7 +18,7 @@ services:
       - app-network
 
   db:
-    image: mysql:5.7
+    image: gaih-mysql:GLOBALAIHUB
     container_name: gaih-db
     restart: unless-stopped
     ports:
@@ -37,11 +37,11 @@ services:
       - app-network
 
   nginx:
-    image: nginx:alpine
+    image: gaih-nginx:GLOBALAIHUB
     container_name: gaih-nginx
     restart: unless-stopped
     ports:
-      - 80:443
+      - 443:443
     volumes:
       - ./:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
