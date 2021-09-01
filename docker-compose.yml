@@ -7,7 +7,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: gaih-image:GLOBALAIHUB
+    image: gaih-image
     container_name: gaih-app
     restart: unless-stopped
     working_dir: /var/www/
@@ -16,15 +16,9 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
-  
-  networks:
-  default:
-    external: true
-    name: globalaihub.local
-
 
   db:
-    image: gaih-mysql:GLOBALAIHUB
+    image: gaih-mysql:5.7
     container_name: gaih-db
     restart: unless-stopped
     ports:
@@ -43,11 +37,11 @@ services:
       - app-network
 
   nginx:
-    image: gaih-nginx:GLOBALAIHUB
-    container_name: gaih-nginx
+    image: gaih-nginx:alpine
+    container_name: laravel-nginx
     restart: unless-stopped
     ports:
-      - 443:443
+      - 8000:80
     volumes:
       - ./:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
