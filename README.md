@@ -20,7 +20,7 @@ This is a PHP development environment used to run gaih applications. The followi
 - Build the app image with the following command:
 
 ```bash
-docker-compose build app
+docker-compose build --pull --no-cache
 ```
 
 - When the build is finished, you can run the environment in background mode with:
